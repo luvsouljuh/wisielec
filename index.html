@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+<input type="text" id="haslo">
+<div id="zamaskowane"></div>
+<button onclick="zamaskuj()">Zamaskuj</button>
+<button onclick="zresetuj()">zresetuj</button>
+
+<script>
+    function zamaskuj(){
+        let haslo = document.getElementById("haslo").value;
+        haslo = haslo.toUpperCase();
+        let dlugosc = haslo.length;
+        let hasloZamaskowane = "";
+
+        for (i=0; i<dlugosc; i++) {
+            if (haslo.charAt(i)==" ") hasloZamaskowane = hasloZamaskowane + " ";
+            else if (haslo.charAt(i)==",") hasloZamaskowane = hasloZamaskowane + ",";
+            else if (haslo.charAt(i)==".") hasloZamaskowane = hasloZamaskowane + ".";
+            else if (haslo.charAt(i)=="!") hasloZamaskowane = hasloZamaskowane + "!";
+            else if (haslo.charAt(i)=="?") hasloZamaskowane = hasloZamaskowane + "?";
+            else hasloZamaskowane = hasloZamaskowane + "-";
+        }
+        document.getElementById("zamaskowane").innerHTML = hasloZamaskowane;
+        document.getElementById("haslo").style.display = "none";
+    }
+    function zresetuj(){
+        location.reload()
+    }
+</script>
+</body>
+</html>
